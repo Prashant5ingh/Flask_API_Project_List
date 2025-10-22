@@ -1,0 +1,15 @@
+<!--Base Template will be inherited to other html files. Only body will be different else everything is same as index -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Default value when nothing is provided for title inherited to index or other template  -->
+    <title>{% block title %}Default Value{% endblock %}</title>
+    
+ </head>
+ <body>
+    <p>This will always be here as it is not the part of block content of base.html.</p>
+    {% block content %}{% endblock %}
+ </body>
+ </html>

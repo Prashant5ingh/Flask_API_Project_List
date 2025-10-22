@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Index Auth Page{% endblock %}
+
+{% block content %}
+<h1>Hello World, This is Flask for User Authentication</h1>
+<br>
+<br>
+
+{% if current_user.is_authenticated %}
+            <h3> Hello !!! {{ current_user.username }} Logged In</h3>
+            <br>
+            <br>
+            <a href="{{ url_for('logout') }}">Logout</a><br>
+            <a href="{{ url_for('secret') }}">Secret URL</a><br>
+{% else %}
+        <h3>Please Login or SignUp</h3>
+        <a href="{{ url_for('signup') }}">Sign Up</a><br>
+        <a href="{{ url_for('login') }}">Login</a><br>
+        <a href="{{ url_for('secret') }}">Secret URL</a><br>
+{% endif %}
+<br>
+
+
+
+
+
+
+
+{% endblock %}

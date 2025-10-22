@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+<h1>Hello World, This is Flask for forms and post request !!!</h1>
+<form method="POST" action="{{ url_for('login') }}">
+  <input type="text" name="username" placeholder="Username" required="required" /><br>
+  <input type="password" name="password" placeholder="Password" required="required" /><br>
+  <!-- <input type="submit" value="Login" /> -->
+  <button type="submit" value="Login">Submit</button>
+
+</form>
+
+<h1>File Upload</h1>
+<form method="POST" action="{{ url_for('file_upload') }}" enctype="multipart/form-data">
+  <input type="file" name="file"
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, text/plain"
+    required="required" /><br>
+  <br>
+  <button type="submit" value="Upload">Upload File</button>
+
+</form>
+
+<br>
+<h1>Convert to CSV</h1>
+<form method="POST" action="{{ url_for('convert_to_csv') }}" enctype="multipart/form-data">
+  <input type="file" name="filecsv"
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+    required="required" /><br>
+  <br>
+  <button type="submit" value="Upload">Convert</button>
+
+</form>
+
+<br>
+<h1>Convert to CSV for download in a directory</h1>
+<form method="POST" action="{{ url_for('convert_to_csv_display') }}" enctype="multipart/form-data">
+  <input type="file" name="filecsv"
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+    required="required" /><br>
+  <br>
+  <button type="submit" value="Upload">Convert</button>
+
+</form>
+
+
+<h1>Javascript JSON Request</h1>
+<button id="mybtn">Send Post Request</button>
+<script type="text/javascript">
+  const button = document.querySelector('#mybtn')
+
+  const jsonData = { name: 'Prime', greeting: 'Hello !!!' }
+  button.addEventListener('click', () => {
+    fetch('{{ url_for("handle_post") }}',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify(jsonData)
+      })
+      .then((res) => 
+        res.json()
+        //data = res.json()
+        //console.log('Successful:', data)
+      )
+      .then(data => console.log("Success",data))
+      .catch((error)=>{
+        console.log("Error in POST API CALL: ",error)
+        // To use error.message as custom msg then we need to throw new error --> throw new Error(`HTTP error! Status: ${response.status}`);
+        // Or we can use axios for error.message as build in feature
+      })
+      
+  })
+</script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Index Auth Page{% endblock %}
+
+{% block content %}
+<h1>Login for Auth</h1>
+
+<!-- {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+          alert("{{ messages[0] }}");
+        </script>
+      {% endif %}
+{% endwith %} -->
+<br>
+<br>
+<form action="{{ url_for('login') }}" method="POST">
+    <input type="text" name="username" placeholder="Username" required="required" /><br>
+    <input type="password" name="password" placeholder="Password" required="required" /><br>
+    
+    <button type="submit" value="Login">Login</button>
+</form>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+    <h1>Hello World, This is Flask !!!</h1>
+    <p>Name: {{val1}}</p> 
+    <p>Add: {{val2}}</p>
+    <p>MyList Greater Than 20: {{mylist}}</p>
+    <ul>
+        {% for items in mylist %} 
+           <!-- <li>{{items}}</li> Listing single elements -->
+           
+           <!-- Listing elements on some conditions with some style -->
+           {% if items > 30 %}
+             <li style="color:Red">{{items}}</li>
+           {% else %}
+             <li>{{items}}</li>
+
+             <!-- Another way to use if else in ordered list <li {% if items == 30 %} style="color: Red" {% endif %}>{{ items }}</li> -->
+           {% endif %}
+        {% endfor %}
+    </ul>
+
+    <!-- Redirects to "/other" route from index.html-->
+    <a href="{{ url_for('other') }}">Click Here: Other</a>
+{% endblock %}

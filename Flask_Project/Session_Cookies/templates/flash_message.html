@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Flash Message Page{% endblock %}
+
+{% block content %}
+    <h1>Hello World, This is Flask for Flash Messages !!!</h1>
+    <h1>Login</h1>
+    <form action="{{ url_for('flash_message') }}" method="POST">
+         <input type="text" name="username" placeholder="Username" required="required" /><br>
+         <input type="password" name="password" placeholder="Password" required="required" /><br>
+        <!-- <input type="submit" value="Login" /> -->
+        <button type="submit" value="Login">Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+    <h1>Hello World, This is Flask for Session and Cookies !!!</h1>
+   <p>{{message}}</p>
+
+   <a href="{{ url_for('set_data') }}">Set Session Data</a><br>
+   <a href="{{ url_for('get_Data') }}">Getting Session Data</a><br>
+   <a href="{{ url_for('clear_data') }}">Cleared Session Data</a><br><br>
+   <a href="{{ url_for('cookies_data') }}">Set Cookies Data</a><br>
+   <a href="{{ url_for('get_cookies') }}">Get Cookies Data</a><br>
+   <a href="{{ url_for('remove_cookies') }}">Clear Cookies Data</a><br><br>
+   <a href="{{ url_for('flash_message') }}">Flash Message Login</a><br>
+
+{% endblock %}

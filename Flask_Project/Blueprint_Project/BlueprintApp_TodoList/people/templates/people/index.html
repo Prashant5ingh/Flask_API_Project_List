@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Index People Page{% endblock %}
+
+{% block content %}
+<h1>Hello World, This is Flask for People Home Page</h1>
+    <ul>
+        {% for person in people %}
+        <li>{{ person }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('People.create') }}">Create People List</a>
+{% endblock %}

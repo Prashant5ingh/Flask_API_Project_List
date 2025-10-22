@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Create People Page{% endblock %}
+
+{% block content %}
+<h1>Hello World, Hello World, This is Flask for People Create Page</h1>
+<form action="{{ url_for('People.create') }}" method="POST">
+    <input type="text" name="name" placeholder="Name" required="required"/>
+    <input type="number" name="age" placeholder="Age" />
+    <input type="text" name="job" placeholder="Job"/>
+    <button type="submit" value="Create">Create</button>
+</form>
+{% endblock %}

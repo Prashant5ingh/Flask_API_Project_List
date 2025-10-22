@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Index Core Page{% endblock %}
+
+{% block content %}
+<h1>Hello World, This is Flask for Core Home Page</h1>
+    <a href="{{ url_for('Todos.index') }}">Todos</a>
+    <a href="{{ url_for('People.index') }}">People</a>
+{% endblock %}

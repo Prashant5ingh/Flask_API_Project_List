@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Other Page{% endblock %}
+
+{% block content %}
+    <h1>Hello World, This is Other Flask HTML code !!!</h1>
+    
+    <!-- using build in function of python like upper(), lower(), floor(). Herer in jinja we will use build in filters for all operations -->
+    <h2>Filters Concept</h2>
+    <p>{{ text|upper }}</p>
+    <p>{{ text|lower }}</p>
+    <p>{{ text|title }}</p>
+    <p>{{ text|count }}</p>
+    <p>{{ text|replace('a','A') }}</p>
+    <p>Built in reverse filter: {{ text|reverse }}</p>
+    <p>Custom reverse filter: {{ text|reverse_string }}</p>
+    <p>{{ text|repeat }}</p>
+    <p>{{ text|repeat(3) }}</p>
+    <p>one letter upper then one letter lower: {{ text|alter_case }}</p>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}User Detail Page{% endblock %}
+
+{% block content %}
+<h1>Hello World, This is Flask for DB connection with SQLITE via SQLALCHEMY</h1>
+<h2>Person {{ person.pid }}</h2>
+
+<p>Name: {{ person.name }}</p>
+<p>Age: {{ person.age }}</p>
+<p>Job: {{ person.job }}</p>
+
+<script type="text/javascript">
+    function deletePerson(pid) {
+        fetch('{{ url_for("delete", pid=pid) }}' + pid, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload()
+                }
+                else {
+                    console.error('Failed to delete', pid)
+                }
+            })
+            .catch(error => {
+                console.error('Error during fetching: ', error)
+            })
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+<h1>Hello World, This is Flask for Download Display !!!</h1>
+
+<br>
+<a href="{{ url_for('download', filename=filename) }}">Download File</a>
+
+{% endblock %}
