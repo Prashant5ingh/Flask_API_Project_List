@@ -9,7 +9,7 @@ class Todo(db.Model):
      done = db.Column(db.Boolean, nullable=False)
 
      def __repr__(self):
-        return f"<TODO: {self.title}, Done: {self.done}>"
+        return f"<TODO: {self.title}, Description: {self.description}, Done: {self.done}>"
      
      def get_id(self):
         return self.tid

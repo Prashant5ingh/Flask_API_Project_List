@@ -3,10 +3,20 @@
 
 {% block content %}
 <h1>Hello World, This is Flask for Todos Home Page</h1>
-    <ul>
-        {% for todo in todos %}
-        <li>{{ todo }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('Todos.create') }}">Create Todo List</a>
+<ul>
+    {% for todo in todos %}
+    <!-- <li>{{ todo }}</li> -->
+    <!-- <li>{{ todo.description, todo.title, todo.done }}</li> -->
+
+    <li>
+        <input type="checkbox" name="done" {% if todo['done'] %}checked{% endif %} disabled onchange="this.form.submit()">
+        <span {% if todo['done'] %}style="text-decoration: line-through" {% endif %}>title: {{ todo['title'] }}, description: {{ todo['description'] }}</span>
+        <a href="{{ url_for('Todos.check', index=todo.tid) }}">check</a>
+        <a href="{{ url_for('Todos.edit', index=todo.tid) }}">edit</a>
+        <!-- <a href="{{ url_for('Todos.delete', index=loop.index0) }}">delete</a> -->
+        <a href="{{ url_for('Todos.delete', index=todo.tid) }}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('Todos.create') }}">Create Todo List</a>
 {% endblock %}
