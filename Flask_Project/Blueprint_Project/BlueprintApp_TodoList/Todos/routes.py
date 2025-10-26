@@ -62,11 +62,10 @@ def edit(index):
 
 @todos.route('/check/<int:index>')
 def check(index):
-    todo = Todo.query.get(index)  # or get_or_404(id)
-
     # todosArr[index]['done'] = not todosArr[index]['done']
-    #todo['index']['done'] = not todo[index]['done']
+
     
+    todo = Todo.query.get(index)  # or get_or_404(id)
     if todo.done:
         todo.done = False
     else:
@@ -78,12 +77,15 @@ def check(index):
 def delete(index):
     #del todosArr[index]
     # return redirect(url_for('Todos.index'))
-    
+
+
     Todo.query.filter(Todo.tid == index).delete()
     db.session.commit()
     todos = Todo.query.all()
     
     return redirect(url_for('Todos.index'))
+
+    # return redirect(url_for('Todos.index', todos = todos)) --> output url: http://localhost:5000/todos/?todos=%3CTODO:+sfsdf,+Description:+sdfsdfsdffsdfsdf,+Done:+True%3E&todos=%3CTODO:+vcvcv,+Description:+cvcvcvcv,+Done:+True%3E
     #return render_template('todos/index.html',todosArr = todos)
 
     # @app.route('/delete/<pid>', methods=['DELETE'])
