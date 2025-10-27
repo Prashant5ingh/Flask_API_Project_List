@@ -10,4 +10,6 @@ A lightweight and modular RESTful API built using Python and Flask. This project
 
 
 ## Reference:
-https://www.youtube.com/watch?v=oQ5UfJqW5Jo&list=PLum0zAZ65cisYXJKiop00She2GdtqjFvO
+1. https://www.youtube.com/watch?v=oQ5UfJqW5Jo&list=PLum0zAZ65cisYXJKiop00She2GdtqjFvO
+2. Python Host --> https://prime17.pythonanywhere.com/
+3. Python anywhere deployment Ref --> [https://youtu.be/Bx_jHawKn5A?si=RQ1OgWYH1LWeLlVo](https://www.youtube.com/watch?v=Bx_jHawKn5A&list=PLEpRcxOmTFlN1ITmQU5P8PHXBSSIMBZaS&index=5)
