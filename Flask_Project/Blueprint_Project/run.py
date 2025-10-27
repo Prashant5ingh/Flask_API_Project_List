@@ -4,7 +4,7 @@ flask_app = create_app()
 
 if __name__ == '__main__':
 
-    # Create database using create_all() method. It doesn;t require to run flask migrate commands seperately.
+    # Create database using create_all() method. It doesn't require to run flask migrate commands seperately.
     with flask_app.app_context():   
          db.create_all() # Create database tables for our data models
     flask_app.run(host='0.0.0.0', debug=True)
