@@ -6,6 +6,8 @@ A lightweight and modular RESTful API built using Python and Flask. This project
 2. flask db migrate - Run this every time you modify the database schema — such as adding a new model class or changing fields in an existing one. It generates a migration script based on the changes.
 3. flask db upgrade - Run this after each migration to apply the changes to your actual SQLite database.
 
+# If we use db.create_all() method then it doesn't require to run flask migrate commands seperately. It's your choice how you want to manage.
+
 
 
 
