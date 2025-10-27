@@ -10,6 +10,7 @@ def create_app():
 
     # Not going to use any secret key in this project
     
+    # db = SQLAlchemy(app)
     db.init_app(app)
 
     # Import and register all blueprints
@@ -24,6 +25,6 @@ def create_app():
 
 
 
-    migrate = Migrate(app, db)
+    # migrate = Migrate(app, db)
 
     return app
