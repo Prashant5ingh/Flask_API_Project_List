@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Box</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"
+        integrity="sha512-8ExARjWWkIllMlNzVg7JKq9RKWPlJABQUNq6YvAjE/HobctjH/NA+bSiDMDvouBVjp4Wwnf1VP1OEv7Zgjtuxw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // If your script is in the <head> or loaded before the DOM is ready, then trying to access DOM elements or initialize logic that depends on them may fail or behave unexpectedly.
+        // Wrapping your code inside a DOMContentLoaded event listener ensures that the code runs only after the entire HTML document has been fully loaded and parsed.
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const socket = io.connect("http://192.168.0.107:5000");
+            socket.on("connect", () => {
+                socket.send("User connected!");
+            });
+            socket.on("message", function (data) {
+                const messagesDiv = document.querySelector("#messages");
+                const p = document.createElement("p");
+                p.textContent = data;
+                messagesDiv.appendChild(p);
+            });
+
+            const sendBtn = document.querySelector("#sendBtn");
+            const usernameInput = document.querySelector("#username");
+            const messageInput = document.querySelector("#message");
+
+            sendBtn.addEventListener("click", () => {
+                if (!usernameInput.checkValidity() || !messageInput.checkValidity()) { // checks required is there or not in input fields.
+                    // - Uses the HTML5 checkValidity() method to verify if each input meets its constraints (like required, pattern, etc.).
+                    // If either input is invalid, the condition is true and the code inside the if block runs.
+
+                    usernameInput.reportValidity();
+                    messageInput.reportValidity();
+                    // - reportValidity() triggers the browser’s built-in validation UI (like red borders or tooltips).
+                    
+                    return;
+                    // return; exits the function early, preventing the message from being sent.
+                }
+
+                socket.send(`${usernameInput.value}: ${messageInput.value}`);
+                messageInput.value = "";
+            });
+
+        });
+    </script>
+    <div id="messages">
+
+    </div>
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="text" id="message" placeholder="Message" required />
+    <button id="sendBtn">Send</button>
+</body>
+
+</html>

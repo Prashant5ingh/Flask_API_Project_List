@@ -1,0 +1,12 @@
+body{
+    text-align: center;
+    font-family: Arial, serif;
+    font-size: 14pt;
+}
+
+#messages{
+    margin: 0 auto;
+    width: 60%;
+    text-align: left;
+    min-height: 100px;
+}
