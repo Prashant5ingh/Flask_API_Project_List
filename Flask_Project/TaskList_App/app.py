@@ -15,6 +15,11 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 Scss(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasklist.db"
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+pymysql://root:Primesql%409@localhost:3306/tasklist_db'
+
+# some-postgres or db :5432 is the container name and port of postgres container running on 5432 (works when both postgress and frontend application both are in same network of docker).
+# for local host machine use localhost:5433
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:mysecretpassword@host.docker.internal:5433/tasklist_db' # Both are in different networks.
+
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:mysecretpassword@localhost:5433/tasklist_db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
