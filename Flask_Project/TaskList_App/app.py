@@ -15,6 +15,7 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 Scss(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasklist.db"
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+pymysql://root:Primesql%409@localhost:3306/tasklist_db'
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:mysecretpassword@localhost:5433/tasklist_db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 

@@ -1,5 +1,6 @@
 from flask import Flask, request, make_response, render_template, redirect, url_for, Response, send_from_directory, jsonify # type: ignore
 from flask_sqlalchemy import SQLAlchemy 
+import requests
 
 
 
@@ -26,6 +27,22 @@ def create_app():
 
     @app.route('/', methods=['GET'])  # route decorator
     def index():
+
+        # Third‑party HTTP client library to make a GET request to an external API. Used to make outgoing HTTP calls from your Python code to other services.
+        # Example: call an external API, download files, etc.
+        resp = requests.get("https://api.github.com/users") # Github API request. --> fetch data of all users in a list
+        # resp = requests.get("https://api.github.com/users/octocat") # Github API request.
+        print("Response status code: ", resp.status_code)
+        if resp.ok:
+             data = resp.json()
+             print(data[0]) # --> print first user data
+             print(data[0].get("login")) # --> print first user login name data
+             print(data[0]["site_admin"]) # --> print first user site admin boolean data
+
+
+            #  print(data.get("login")) --> data fetching for specific user
+            #  print(data["name"])
+
         return jsonify({"message": "Welcome to the Travel API!"}) 
    
     # Route to get all destinations from the database (GET method)
