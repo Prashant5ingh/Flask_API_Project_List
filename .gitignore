@@ -1,3 +1,4 @@
 myVenv/
 __pycache__/
 blueprintdocker.tar
+.env
