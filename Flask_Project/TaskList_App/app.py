@@ -109,7 +109,7 @@ def update(id):
 
 if __name__ in "__main__":
 
-    app.run(debug=True, host="0.0.0.0", port=5500) # This port will serve as docker server port. If not provided any port then it will use 5000 here and also in docker.
+    app.run(debug=True, host="0.0.0.0") # This port will serve as docker server port. If not provided any port then it will use 5000 here and also in docker.
     # app.run(debug=True, host="0.0.0.0", port=5500)
     
     # docker build --tag primedochub/todo_app-docker:latest .
