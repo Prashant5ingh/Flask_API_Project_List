@@ -11,6 +11,7 @@ import os
 
 app = Flask(__name__)
 
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:mysecretpassword@localhost:5433/todolist_db"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///todolist.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
