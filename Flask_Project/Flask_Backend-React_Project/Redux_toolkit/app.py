@@ -49,7 +49,7 @@ with app.app_context(): # Create the database and the db table
 # Not needed as we are using proxy in vite config (React Js) for local development
 CORS(
     app,
-    resources={r"/*": {"origins": ["http://localhost:5173","http://localhost:5174","http://localhost:3000", "https://project01-bg-changer.vercel.app/"], "methods": ["GET", "POST","DELETE","PUT"]}},
+    resources={r"/*": {"origins": ["http://localhost:5173","http://localhost:5174","http://localhost:3000", "https://project01-bg-changer.vercel.app"], "methods": ["GET", "POST","DELETE","PUT"]}},
     supports_credentials=True,
     allow_headers=["Content-Type", "Authorization"]
 )
