@@ -29,13 +29,14 @@ class Todo(db.Model):
     """
     id = db.Column(db.String, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
-    # completed = db.Column(db.Integer, default=0)
+    completed = db.Column(db.Boolean, default=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     
     def __repr__(self):
         return {
                 "id": self.id,
                 "content": self.content,
+                "completed": self.completed,
                 "date_created": self.date_created
             }
     
@@ -48,7 +49,7 @@ with app.app_context(): # Create the database and the db table
 # Not needed as we are using proxy in vite config (React Js) for local development
 CORS(
     app,
-    resources={r"/*": {"origins": ["http://localhost:5173","http://localhost:5174","http://localhost:3000", "https://frontend-nine-ebon-34.vercel.app"], "methods": ["GET", "POST","DELETE"]}},
+    resources={r"/*": {"origins": ["http://localhost:5173","http://localhost:5174","http://localhost:3000", "https://project01-bg-changer.vercel.app/"], "methods": ["GET", "POST","DELETE","PUT"]}},
     supports_credentials=True,
     allow_headers=["Content-Type", "Authorization"]
 )
@@ -66,10 +67,12 @@ def get_tasks():
 def add_task():
     content = request.json.get('content')
     id = request.json.get('id')
-    if not content and id:
+    completed = request.json.get('completed')
+    if not content:
         return jsonify({'error': 'Content or id is required'}), 400
     new_task = Todo(content=content,
-                    id=id)
+                    id=id,
+                    completed=completed)
     db.session.add(new_task)
     db.session.commit()
     return jsonify({'message': 'Task added successfully'}), 201
@@ -86,6 +89,20 @@ def delete_task(id):
             return jsonify({"error": "Failed to delete task, Reason: " + str(e)}), 500           
 
 
+@app.route('/updatetask/<string:id>', methods=['PUT'])
+def update_task(id):
+         data = request.get_json()
+
+         task_to_update = Todo.query.get_or_404(id) 
+         
+         task_to_update.content = data.get('content', task_to_update.content)
+         task_to_update.completed = data.get('completed', task_to_update.completed)
+         
+         db.session.commit()
+         return jsonify({"message": "Task updated successfully"}), 200
+
+
+# For Testing third-party API calls
 @app.route('/api/github')
 def github_api():
         # Third‑party HTTP client library to make a GET request to an external API. Used to make outgoing HTTP calls from your Python code to other services.
