@@ -1,0 +1,56 @@
+# web app deployment of mongo-express
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: mongo-express
+        image: mongo-express:latest
+        ports:
+        - containerPort: 8081
+        env:
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-pass
+        - name: ME_CONFIG_MONGODB_SERVER  # data comes from config file. 
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-config
+              key: mongo-uri
+      
+---
+# service --> stand alone file, we can also create mongo-service.yml as well.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  type: NodePort
+  selector:
+    # app.kubernetes.io/name: MyApp
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 8081 # we can change this to any port we want, but it should match the containerPort in the deployment
+      targetPort: 8081
+      nodePort: 30200 # this is the port on which we can access the service from outside the cluster, we can change this to any port we want, but it should be in the range of 30000-32767 for NodePort services
