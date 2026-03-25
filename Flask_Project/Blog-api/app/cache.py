@@ -1,5 +1,5 @@
 import redis
-from flask import current_app
+from flask import current_app # To access the Flask app's configuration for Redis URL
 import json
 
 redis_client = None
