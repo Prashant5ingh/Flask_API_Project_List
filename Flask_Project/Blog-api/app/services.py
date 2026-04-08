@@ -28,7 +28,7 @@ def get_blogs(page, per_page=5): # Default to 5 blogs per page
         return cached
 
     pagination = Blog.query.order_by(
-        Blog.created_at.desc()
+        Blog.created_at.asc()
     ).paginate(page=page, per_page=per_page)
 
     result = [blog.to_dict() for blog in pagination.items]
