@@ -28,6 +28,20 @@ def create_app():
         from . import routes
         jti = jwt_payload["jti"]
         return jti in routes.blacklist
+    '''
+    Token Revocation: Depends on your needs
+Revocation is for blacklisting tokens (logout scenario).
+
+Do you need it if:
+
+✅ Users can logout and token should become invalid
+✅ You want to revoke specific user sessions
+✅ User password changes (old tokens should be invalid)
+Don't need it if:
+
+Tokens are short-lived (24 hours in your code) — user just waits for expiration
+No logout endpoint needed
+    '''
     
     # Import routes AFTER initializing extensions
     from . import routes
