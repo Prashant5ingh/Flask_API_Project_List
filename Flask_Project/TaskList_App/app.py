@@ -18,9 +18,13 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasklist.db"
 
 # some-postgres or db :5432 is the container name and port of postgres container running on 5432 (works when both postgress and frontend application both are in same network of docker).
 # for local host machine use localhost:5433
-# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:mysecretpassword@host.docker.internal:5433/tasklist_db' # Both are in different networks.
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:postgres@host.docker.internal:5432/tasklist_db' # Both are in different networks.
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:mysecretpassword@localhost:5433/tasklist_db'
+# New postgres container with different port and name for local development. "some-postgres" --> "set DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/blogdb"
+# "postgresql://postgres:postgres@localhost:5432/blogdb" # can use the db-1 container and instead of service name 'db' use "localhost" as hostname. For local development'
+
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:postgres@localhost:5432/tasklist_db'
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
