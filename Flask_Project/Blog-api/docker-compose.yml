@@ -15,7 +15,7 @@ services:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/blogdb
       REDIS_URL: redis://redis:6379/0
 
-  db:
+  db: # data will be persisted inside the postgres container, so we don't need to worry about data loss when the container is stopped.
     image: postgres:15
     restart: always
     environment:
