@@ -17,7 +17,10 @@ def create_app():
     app = Flask(__name__)
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
     app.config["JWT_SECRET_KEY"] = "super-secret"
-    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 3600
+    app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 3600 # 1 hour
+    '''
+    Refresh Token Expiry: Not explicitly configured, so it defaults to 30 days (flask-jwt-extended default)
+   '''
     
     db.init_app(app)
     jwt.init_app(app)
