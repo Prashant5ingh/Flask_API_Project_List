@@ -8,65 +8,75 @@ This project demonstrates scalable backend architecture, REST API design, authen
 
 ## ✨ Features
 🔐 Authentication & Security
-User Registration
-User Login
-JWT Access Tokens
+- User Registration
+- User Login
+- JWT Access Tokens
 Refresh Token Authentication
-Token Revocation (Logout Support)
-Password Hashing
-Protected Routes
-Rate Limiting using Flask-Limiter
+- Token Revocation (Logout Support)
+- Password Hashing
+- Protected Routes
+- Rate Limiting using Flask-Limiter
 
 ## 🏢 Organization & Project Management
-Create Organizations
-Create Projects
-Multi-project architecture
-Project ownership tracking
+- Create Organizations
+- Create Projects
+- Multi-project architecture
+- Project ownership tracking
 
 ## 📌 Task Management
-Create Tasks
-Update Tasks
-Delete Tasks
-Task Status Management
-Task Pagination
-Task Search Support (extendable)
-Task Assignment Structure
+- Create Tasks
+- Update Tasks
+- Delete Tasks
+- Task Status Management
+- Task Pagination
+- Task Search Support (extendable)
+- Task Assignment Structure
 
 ## 💬 Collaboration
-Task Comments
-User-to-task assignments
+- Task Comments
+- User-to-task assignments
 
 ## ⚡ Performance Optimization
-Redis Caching
-Cached task listing APIs
-Cache invalidation support
+- Redis Caching
+- Cached task listing APIs
+- Cache invalidation support
 
 ## 🐳 Deployment & DevOps
-Dockerized setup
-Docker Compose support
-PostgreSQL container
-Redis container
-Railway (Backend Deployment Platform)
+- Dockerized setup
+- Docker Compose support
+- PostgreSQL container
+- Redis container
+- Railway (Backend Deployment Platform)
 
 ## 🧠 Tech Stack
 Backend
-Python
-Flask
-Flask Blueprint Architecture
+- Python
+- Flask
+- Flask Blueprint Architecture
 
 ## Database
-PostgreSQL
-SQLAlchemy ORM
+- PostgreSQL
+- SQLAlchemy ORM
 
 ## Authentication
-JWT (JSON Web Tokens)
-Refresh Tokens
-Token Revocation
+- JWT (JSON Web Tokens)
+- Refresh Tokens
+- Token Revocation
 
 ## Caching
 Redis
 
 ## Security
-Flask-Limiter
-Werkzeug Password Hashing
+- Flask-Limiter
+- Werkzeug Password Hashing
+
+## 🗄️ Database Design
+Tables
+- users
+- organizations
+- projects
+- tasks
+- comments
+- task_assignments
+- refresh_tokens --> For this service table is not created 
 
