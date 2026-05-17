@@ -131,12 +131,12 @@ Cache Miss → Query PostgreSQL → Save in Redis
 | GET    | /projects/ | Get projects   |
 
 - tasks
-| Method | Endpoint    | Description         |
-| ------ | ----------- | ------------------- |
-| POST   | /tasks     | Create task         |
-| GET    | /tasks/     | Get paginated tasks |
-| PUT    | /tasks/{id} | Update task         |
-| DELETE | /tasks/{id} | Delete task         |
+- | Method | Endpoint    | Description         |
+- | ------ | ----------- | ------------------- |
+- | POST   | /tasks     | Create task         |
+- | GET    | /tasks/     | Get paginated tasks |
+- | PUT    | /tasks/{id} | Update task         |
+- | DELETE | /tasks/{id} | Delete task         |
 
 
 ## 🐳 Running with Docker
