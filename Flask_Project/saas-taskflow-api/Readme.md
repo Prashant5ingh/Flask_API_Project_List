@@ -117,22 +117,22 @@ Cache Miss → Query PostgreSQL → Save in Redis
 
 ## 📡 API Endpoints
 - Authentication:
-| Method | Endpoint       | Description          |
-| ------ | -------------- | -------------------- |
-| POST   | /auth/register | Register user        |
-| POST   | /auth/login    | Login user           |
-| POST   | /auth/refresh  | Refresh access token |
-| POST   | /auth/logout   | Revoke refresh token |
+- | Method | Endpoint       | Description          |
+
+- | POST   | /auth/register | Register user        |
+- | POST   | /auth/login    | Login user           |
+- | POST   | /auth/refresh  | Refresh access token |
+- | POST   | /auth/logout   | Revoke refresh token |
 
 - Projects
-| Method | Endpoint   | Description    |
-| ------ | ---------- | -------------- |
-| POST   | /projects | Create project |
-| GET    | /projects/ | Get projects   |
+- | Method | Endpoint   | Description    |
+
+- | POST   | /projects | Create project |
+- | GET    | /projects/ | Get projects   |
 
 - tasks
 - | Method | Endpoint    | Description         |
-- | ------ | ----------- | ------------------- |
+
 - | POST   | /tasks     | Create task         |
 - | GET    | /tasks/     | Get paginated tasks |
 - | PUT    | /tasks/{id} | Update task         |
