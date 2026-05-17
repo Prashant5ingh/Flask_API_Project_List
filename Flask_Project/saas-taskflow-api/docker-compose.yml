@@ -1,0 +1,38 @@
+services:
+  task-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: primedochub/saas-taskflow-app:latest
+    container_name: saas-taskflow-app
+    ports:
+      - "3000:5500"
+    depends_on:
+      redis:
+        condition: service_started
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    # volumes: # Uncomment this if you want to persist data or have live code updates without rebuilding the image. Make sure to adjust paths as needed.
+    #   - ./:/app
+    #   - task_data:/app/instance
+    command: python run.py
+    restart: unless-stopped
+    networks:
+      - task-network
+
+  redis:
+    image: redis:7
+    container_name: redis-2
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - task-network
+
+volumes:
+  task_data:
+    driver: local
+
+networks:
+  task-network:
+    driver: bridge
