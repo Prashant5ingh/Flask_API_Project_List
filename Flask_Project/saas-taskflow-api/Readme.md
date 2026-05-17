@@ -4,6 +4,8 @@ A production-style SaaS Task Management Backend built using Flask, PostgreSQL, R
 TaskFlow API is a Trello-like backend system that supports organizations, projects, tasks, authentication, role-based access concepts, caching, pagination, rate limiting, and refresh token authentication.
 This project demonstrates scalable backend architecture, REST API design, authentication flows, database relationships, and production-ready engineering practices.
 
+## Project URL: https://saas-taskflow-app-production.up.railway.app/api/
+
 ## ✨ Features
 🔐 Authentication & Security
 User Registration
@@ -44,6 +46,7 @@ Dockerized setup
 Docker Compose support
 PostgreSQL container
 Redis container
+Railway (Backend Deployment Platform)
 
 ## 🧠 Tech Stack
 Backend
@@ -67,6 +70,3 @@ Redis
 Flask-Limiter
 Werkzeug Password Hashing
 
-## DevOps
-Docker
-Docker Compose
