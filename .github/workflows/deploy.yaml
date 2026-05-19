@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image and push to Docker Hub
-        working-directory: ./Flask_Project/saas-taskflow-app
+        working-directory: Flask_Project/saas-taskflow-app
         run: | 
           docker compose up -d --build   
           docker push primedochub/saas-taskflow-app:latest
