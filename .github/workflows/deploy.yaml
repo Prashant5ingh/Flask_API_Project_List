@@ -29,7 +29,7 @@ jobs:
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
             -H "Content-Type: application/json" \
-            --data-binary @- https://backboard.railway.app/graphql <<EOF
+            --data-binary @- https://backboard.railway.app/graphql <<'EOF'
           {
             "query": "mutation { redeployService(serviceId: \"${{ secrets.RAILWAY_SERVICE_ID }}\") { id } }"
           }
