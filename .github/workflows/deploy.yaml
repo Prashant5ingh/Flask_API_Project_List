@@ -18,12 +18,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
-        run: docker compose up -d --build   
-        # run: docker build -t vaibhav/jwt-auth-app:latest .
-
-      - name: Push Docker image
-        run: docker push primedochub/saas-taskflow-app:latest
+      - name: Build Docker image and push to Docker Hub
+        working-directory: ./saas-taskflow-app
+        run: | 
+          docker compose up -d --build   
+          docker push primedochub/saas-taskflow-app:latest
 
       - name: Deploy to Railway
         run: |
