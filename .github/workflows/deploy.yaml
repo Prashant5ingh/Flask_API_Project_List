@@ -1,34 +1,47 @@
-name: CI/CD for Flask app to Railway
+name: CI/CD for Flask App to Railway
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Log in to Docker Hub
+      # Login to Docker Hub
+      - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image and push to Docker Hub
+      # Build Docker image
+      - name: Build Docker image
         working-directory: Flask_Project/saas-taskflow-api
-        run: | 
-          docker compose up -d --build   
+        run: |
+          docker build -t primedochub/saas-taskflow-app:latest .
+
+      # Push image to Docker Hub
+      - name: Push Docker image
+        run: |
           docker push primedochub/saas-taskflow-app:latest
 
+      # Wait for Docker Hub to update image manifest
+      - name: Wait before redeploy
+        run: sleep 20
+
+      # Trigger Railway redeploy
       - name: Trigger Railway Redeploy
         run: |
           curl -X POST https://backboard.railway.app/graphql/v2 \
-          -H "Content-Type: application/json" \
-          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
-          -d '{
-                "query": "mutation { serviceInstanceRedeploy(environmentId: \"'${{ secrets.RAILWAY_ENVIRONMENT_ID }}'\", serviceId: \"'${{ secrets.RAILWAY_SERVICE_ID }}'\") }"
-          }'
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+            -d '{
+              "query": "mutation { serviceInstanceRedeploy(environmentId: \"${{ secrets.RAILWAY_ENVIRONMENT_ID }}\", serviceId: \"${{ secrets.RAILWAY_SERVICE_ID }}\") }"
+            }'
