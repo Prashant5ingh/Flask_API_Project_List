@@ -25,7 +25,7 @@ jobs:
           docker push primedochub/saas-taskflow-app:latest
 
       - name: Deploy to Railway
-         run: |
+        run: |
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
             -H "Content-Type: application/json" \
