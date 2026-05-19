@@ -30,5 +30,5 @@ jobs:
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
             -H "Content-Type: application/json" \
-            -d '{"serviceId":"<your-service-id>","image":"primedochub/saas-taskflow-app:latest"}' \
+            -d '{"serviceId":"${{ secrets.RAILWAY_SERVICE_ID }}","image":"primedochub/saas-taskflow-app:latest"}' \
             https://backboard.railway.app/graphql
