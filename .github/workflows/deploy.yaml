@@ -27,8 +27,8 @@ jobs:
       - name: Trigger Railway Redeploy
         run: |
           curl -X POST https://backboard.railway.app/graphql/v2 \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
-            -d '{
-              "query": "mutation { serviceInstanceRedeploy(id: \"'${{ secrets.RAILWAY_SERVICE_ID }}'\") }"
-            }'
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+          -d '{
+                "query": "mutation { serviceInstanceRedeploy(environmentId: \"'${{ secrets.RAILWAY_ENVIRONMENT_ID }}'\", serviceId: \"'${{ secrets.RAILWAY_SERVICE_ID }}'\") }"
+          }'
