@@ -24,10 +24,13 @@ jobs:
           docker compose up -d --build   
           docker push primedochub/saas-taskflow-app:latest
 
-      - name: Deploy to Railway
+      - name: Trigger Railway redeploy
         run: |
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
             -H "Content-Type: application/json" \
-            --data-raw "{\"query\":\"mutation { redeployService(serviceId: \\\"${{ secrets.RAILWAY_SERVICE_ID }}\\\") { id } }\"}" \
-            https://backboard.railway.app/graphql
+            --data-binary @- https://backboard.railway.app/graphql <<EOF
+          {
+            "query": "mutation { redeployService(serviceId: \"${{ secrets.RAILWAY_SERVICE_ID }}\") { id } }"
+          }
+           EOF
