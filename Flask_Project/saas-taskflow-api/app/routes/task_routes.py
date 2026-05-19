@@ -10,7 +10,7 @@ task_bp = Blueprint("tasks", __name__)
 @task_bp.route("/health", methods=["GET"])
 def health():
     """Health check endpoint."""
-    return jsonify({"status": "ok", "message": "Task API is healthy!"}), 200
+    return jsonify({"status": "ok", "message": "Task API is healthy and working!"}), 200
 @task_bp.route("", methods=["POST"])
 @jwt_required
 def create():
