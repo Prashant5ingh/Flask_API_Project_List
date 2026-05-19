@@ -33,4 +33,4 @@ jobs:
           {
             "query": "mutation { redeployService(serviceId: \"${{ secrets.RAILWAY_SERVICE_ID }}\") { id } }"
           }
-           EOF
+          EOF
