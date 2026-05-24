@@ -10,7 +10,9 @@ task_bp = Blueprint("tasks", __name__)
 @task_bp.route("/health", methods=["GET"])
 def health():
     """Health check endpoint."""
-    return jsonify({"status": "ok", "message": "Task API is healthy and pls navigate to api/auth/register or api/auth/login. Readme File --> https://github.com/Prashant5ingh/Flask_API_Project_List/blob/main/Flask_Project/saas-taskflow-api/Readme.md"}), 200
+    return jsonify({"status": "ok", 
+                    "message": "Task API is healthy and pls navigate to api/auth/register or api/auth/login.",
+                    'Project_link': 'https://github.com/Prashant5ingh/Flask_API_Project_List/blob/main/Flask_Project/saas-taskflow-api/Readme.md'}), 200
 @task_bp.route("", methods=["POST"])
 @jwt_required
 def create():
