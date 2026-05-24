@@ -47,6 +47,7 @@ This project demonstrates scalable backend architecture, REST API design, authen
 - Docker Compose support
 - PostgreSQL container
 - Redis container
+- CI/CD pipeline with GitHub Actions, Docker Hub for automated deployment
 - Railway / Render (Backend Deployment Platform)
 
 ## 🧠 Tech Stack
@@ -150,6 +151,7 @@ Cache Miss → Query PostgreSQL → Save in Redis
 - Backend Architecture
 - Caching Strategies
 - Docker & DevOps Basics
+- CI/CD Pipeline using Github actions
 - Production Backend Engineering
 
 ## 🚀 Future Improvements
@@ -157,7 +159,6 @@ Cache Miss → Query PostgreSQL → Save in Redis
 - WebSocket Notifications
 - Async Task Queue (Celery)
 - Email Notifications
-- CI/CD Pipeline
 - Kubernetes Deployment
 - Unit & Integration Tests
 
