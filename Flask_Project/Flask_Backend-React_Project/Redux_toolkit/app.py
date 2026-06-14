@@ -59,7 +59,7 @@ def get_tasks():
     tasks = Todo.query.order_by(Todo.date_created).all()
     # print("tasks",tasks)
     
-    return jsonify([task.__repr__() for task in tasks])
+    return jsonify([task.__repr__() for task in tasks]) #
     # return jsonify([{'id': "task.id", 'content': "new task", 'date_created': "task.date_created"},{'id': "task.id", 'content': "hardcoded task", 'date_created': "task.date_created"}])
     
 
