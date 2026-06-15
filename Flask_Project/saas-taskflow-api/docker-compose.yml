@@ -26,9 +26,9 @@ services:
     #     - db_data:/var/lib/postgresql/data
     #   networks:
     #     - task-network
-      # volumes: # Uncomment this if you want to persist data or have live code updates without rebuilding the image. Make sure to adjust paths as needed.
+    volumes: # Uncomment this if you want to persist data or have live code updates without rebuilding the image. Make sure to adjust paths as needed.
       # #  - ./:/app
-      #  - task_data:/app/instance
+       - task_data:/app/instance
     command: python run.py
     restart: unless-stopped
     networks:
