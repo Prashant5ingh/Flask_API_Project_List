@@ -12,7 +12,7 @@ services:
         condition: service_started
     environment:
       # DATABASE_URL: postgresql://postgres:postgres@host.docker.internal:5432/saastask # Use host.docker.internal to connect to the database running on another container or on the host machine. 
-      # DATABASE_URL: sqlite:///instance/task.db 
+      # DATABASE_URL: sqlite:///instance/task.db # Use SQLite for simplicity in this example. Adjust as needed for production.
       REDIS_URL: redis://redis:6379/0
       volumes: # Uncomment this if you want to persist data or have live code updates without rebuilding the image. Make sure to adjust paths as needed.
       #  - ./:/app
