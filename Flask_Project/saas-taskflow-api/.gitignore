@@ -1,0 +1,6 @@
+myVenv/
+__pycache__/
+blueprintdocker.tar
+.env
+instance/
+instance/task.db
